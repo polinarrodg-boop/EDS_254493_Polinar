@@ -48,6 +48,7 @@ EDS_254493_Polinar/
 │   │   ├── Ammonium ACTSOR-AQUA-UDC-1.json
 │   │   └── [Remaining localized parameter logs...]
 │   │
+│   ├── data_cleaned/
 │   └── cleaned.csv            (5,871 compiled lines — Target operational slice)
 │
 └── outputs/                   # Generated engineering visual assets
