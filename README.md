@@ -117,6 +117,7 @@ pip install -r requirements.txt
 
 # 3. Run everything
 python main.py
+```
 
 ---
 
