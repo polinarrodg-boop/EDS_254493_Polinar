@@ -56,3 +56,64 @@ EDS_254493_Polinar/
     ├── static_3_correlation_heatmap.png
     ├── interactive_1_efficiency_telemetry.html
     └── interactive_2_vulnerability_animation.html
+```
+
+---
+## 🗄️ The Dataset
+
+The pipeline processes multi-stream IoT sensor nodes recording decentralized telemetry from independent tracking stations.
+
+| Dataset | Format / Rows | Purpose |
+|---|---|---|
+| `data_original/*.json` | 9 Log Streams | Asynchronous raw source data — unaligned |
+| `data/cleaned.csv` | 5,871 Rows | **The actual analysis source (pH $\ge$ 7.5)** |
+
+Key columns generated include `Timestamp` 🔑 (the index variable), `pH`, `Temperature`, `Ammonia_Inlet`, `Ammonia_Outlet`, `Dissolved_Oxygen`, and `Filter_Efficiency` — all aligned timeseries telemetry.
+
+---
+
+## 🧹 How Data Gets Cleaned
+
+Five steps, run automatically in sequence:
+
+1. **Parse Telemetry Nodes** — Read disjoint JSON files, cast parameters, and normalize headers.
+2. **Asynchronous Alignment** — Execute a temporal nearest-match join (`pd.merge_asof`) across a 30,000 ms window to fix decoupled tracking intervals.
+3. **Coerce Numerics & Impute** — Cast parameters to numerical values and fill missing indices using feature medians.
+4. **Enforce Engineering Boundary** — Programmatically filter the active dataset to isolate operations where **$\text{pH} \ge 7.5$**.
+5. **Compute Kinetic Vectors** — Transform arrays to calculate final bio-filter nitrification conversion metrics into an updated check-pointed `.csv`.
+
+---
+
+## 🔬 Statistical Tests
+
+All calculations run via optimized NumPy array operations on the cleaned operational slice.
+
+| Test / Metric | What It Measures | Key Result |
+|---|---|---|
+| 📊 Descriptive Stats | Mean, median, SD, min/max | Avg filter efficiency ≈ 88.45%, avg temperature ≈ 26.42°C |
+| 📈 Dispersion Analysis | System volatility and variance | Temperature variance = 0.84, efficiency variance = 6.74 |
+| 🔗 Covariance Matrix | Multivariable alignment correlation | Isolates feature interactions across water chemical states |
+| ⚖️ Efficiency Tracking | Intake vs. Discharge performance shifts | Checked using: $\frac{\text{Ammonia}_{\text{Inlet}} - \text{Ammonia}_{\text{Outlet}}}{\text{Ammonia}_{\text{Inlet}}} \times 100$ |
+
+---
+
+## 📊 Outputs
+
+**3 static charts** (distribution histogram, comparative intake vs. discharge boxplot, and matrix heatmap) and **2 interactive assets:**
+
+- 🎞️ `interactive_1_efficiency_telemetry.html` — Dynamic interactive range slider timeline tracking nitrification efficiency chronology over time.
+- 🌐 `interactive_2_vulnerability_animation.html` — Cross-sectional scatter frame-by-frame animation showing performance drift over system pH modifications.
+
+---
+
+## ⚙️ How to Run
+
+```bash
+# 1. Direct terminal to project directory
+cd C:\Users\RODG\OneDrive\Desktop\ComProg_Lab\EDS_254493_Polinar
+
+# 2. Install dependencies
+pip install -r requirements.txt
+
+# 3. Run everything
+python main.py
