@@ -1,86 +1,84 @@
-# 🐟 AQU-04 — Bio-Filter Efficiency Tracking in Recirculating Aquaculture Systems
+# 🐟 AQU-04: Automated Telemetry Ingestion and Nitrification Efficiency Diagnostics for Recirculating Aquaculture Systems
 
-> An automated Python pipeline that isolates the exact water chemistry thresholds where bio-filter nitrification efficiency drops—and validates the system drift using vectorized NumPy analytics.
+> An object-oriented data engineering architecture designed to synchronize decoupled IoT sensor streams, isolate operational chemistry thresholds, and compute bio-filter kinetic stability.
 
 ---
 
-## 👤 Student Info
+## 👤 Student Profile
 
-| | |
-|---|---|
-| **Student Name** | `[ Rodg Polinar ]` |
-| **Student Number** | `[ TUPM-25-4493 ]` |
-| **Course & Section** | BSECE – 1C |
+| :--- | :--- |
+| **Student Nmae** | `[ Rodg Polinar ]` |
+| **Student ID No.** | `[ TUPM-25-4493 ]` |
+| **Course, Year, and Section** | BSECE – 1C |
 | **Subject** | Computer Programming 1 |
 | **Professor** | Engr. Gilfred Allen Madrigal |
-| **School** | Technological University of the Philippines – Manila |
+| **University** | Technological University of the Philippines – Manila |
 
 ---
 
-## 🌱 What This Project Does
+## 🌱 Purpose of this Project
 
-Recirculating Aquaculture Systems (RAS) require strict ammonia management. High ammonia levels = toxic environment for aquatic life. This pipeline processes asynchronous IoT sensor telemetry to isolate bio-filter conversion performance boundaries based on system water chemistry.
+Maintaining water quality parameters within closed Recirculating Aquaculture Systems (RAS) requires continuous mitigation of toxic total nitrogen. This specialized analytics script automates the compilation of multi-stream environmental logs to map biological bio-filter conversion anomalies across varying water chemistry profiles.
 
-**Three zones, clearly defined:**
+**Operational System Tranches:**
 
-| Zone | pH Level | Meaning |
-|---|---|---|
-| 🟢 **Optimal Operation** | $\ge 7.5$ | Target range — high bacterial nitrification kinetic efficiency |
-| 🟡 **Sub-Optimal Drift** | $7.1 - 7.4$ | Inhibited biological activity, track telemetry closely |
-| 🔴 **Critical Stress** | $< 7.1$ | Severe nitrification arrest, dangerous toxic ammonia accumulation |
+| Operational Domain | Environmental pH Scale | Meaning |
+| :--- | :--- | :--- |
+| 🟢 **Target Operation** | $\ge 7.5$ | Maximum nitrification kinetics; structurally stable |
+| 🟡 **System Inhibition** | $7.1 - 7.4$ | Biological activity drop-off; operational drift detected |
+| 🔴 **Critical Failure** | $< 7.1$ | Total nitrification arrest; toxic ammonia buildup |
 
-**Core finding:** Filtering operations to the engineered boundary of **$\text{pH} \ge 7.5$** stabilizes the system, yielding an average biological conversion efficiency rate of **88.45%** with minimal variance.
+**Primary Analytical Finding:** Restricting data ingestion to the targeted operational boundary of **$\text{pH} \ge 7.5$** establishes an average conversion efficiency index of **88.45%** with highly stable variance characteristics.
 
 ---
 
-## 📁 File Structure
+## 📁 Repository Blueprint
 
 ```text
 EDS_254493_Polinar/
 │
-├── main.py                    ← Run this — does everything automatically
-├── requirements.txt
-├── README.md
+├── main.py                    ← Core compilation program (runs pipeline end-to-end)
+├── requirements.txt           ← Declared library environmental manifests
+├── README.md                  ← Comprehensive execution documentation
 │
 ├── data/
-│   ├── data_original/         (9 separate multi-stream raw IoT JSON logs)
+│   ├── data_original/         (9 unaligned asynchronous raw JSON telemetry streams)
 │   │   ├── ph ACTSOR-AQUA-UDC-3.json
 │   │   ├── Ammonium ACTSOR-AQUA-UDC-1.json
-│   │   └── [Other raw telemetry streams...]
+│   │   └── [Remaining localized parameter logs...]
 │   │
-│   └── cleaned.csv            (5,871 rows — Filtered operational checkpoint)
+│   └── cleaned.csv            (5,871 compiled lines — Target operational slice)
 │
-└── outputs/
+└── outputs/                   # Generated engineering visual assets
     ├── static_1_efficiency_distribution.png
     ├── static_2_ammonia_reduction_boxplot.png
     ├── static_3_correlation_heatmap.png
     ├── interactive_1_efficiency_telemetry.html
     └── interactive_2_vulnerability_animation.html
 ```
+---
+## 🗄️ Sensor Logging Architecture
+
+The parsing matrix operates on raw, detached internet-of-things (IoT) environmental logs recording parameters across active monitoring nodes.
+
+| Data Domain | File Structure / Volumetric Profile | Substantive Role |
+| :--- | :--- | :--- |
+| `data_original/*.json` | 9 Disjoint Serialization Vectors | Asynchronous source streams (decoupled intervals) |
+| `data/cleaned.csv` | 5,871 Chronological Vectors | **Filtered, aligned, and synchronized analysis source** |
+
+Key runtime variables generated include `Timestamp` 🔑, `pH`, `Temperature`, `Ammonia_Inlet`, `Ammonia_Outlet`, `Dissolved_Oxygen`, and `Filter_Efficiency`.
 
 ---
-## 🗄️ The Dataset
 
-The pipeline processes multi-stream IoT sensor nodes recording decentralized telemetry from independent tracking stations.
+## 🧹 Automated Cleaning Workflow
 
-| Dataset | Format / Rows | Purpose |
-|---|---|---|
-| `data_original/*.json` | 9 Log Streams | Asynchronous raw source data — unaligned |
-| `data/cleaned.csv` | 5,871 Rows | **The actual analysis source (pH $\ge$ 7.5)** |
+The compilation layer processes the data through five automated phases:
 
-Key columns generated include `Timestamp` 🔑 (the index variable), `pH`, `Temperature`, `Ammonia_Inlet`, `Ammonia_Outlet`, `Dissolved_Oxygen`, and `Filter_Efficiency` — all aligned timeseries telemetry.
-
----
-
-## 🧹 How Data Gets Cleaned
-
-Five steps, run automatically in sequence:
-
-1. **Parse Telemetry Nodes** — Read disjoint JSON files, cast parameters, and normalize headers.
-2. **Asynchronous Alignment** — Execute a temporal nearest-match join (`pd.merge_asof`) across a 30,000 ms window to fix decoupled tracking intervals.
-3. **Coerce Numerics & Impute** — Cast parameters to numerical values and fill missing indices using feature medians.
-4. **Enforce Engineering Boundary** — Programmatically filter the active dataset to isolate operations where **$\text{pH} \ge 7.5$**.
-5. **Compute Kinetic Vectors** — Transform arrays to calculate final bio-filter nitrification conversion metrics into an updated check-pointed `.csv`.
+1. **Stream Discovery:** Ingests isolated JSON log structures, handles metadata exclusions, and standardizes feature column headers.
+2. **Nearest-Match Temporal Alignment:** Binds independent records using an asynchronous time join (`pd.merge_asof`) restricted to a 30-second window.
+3. **Data Type Normalization:** Coerces inputs to high-precision floats and replaces missing matrix elements with median values.
+4. **Boundary Constraint Enforcement:** Executes a logical slice operation to isolate telemetry records matching the **$\text{pH} \ge 7.5$** engineering rule.
+5. **Vectorized Mathematical Expansion:** Passes the target arrays to low-overhead arrays to compute final nitrification percentage metrics before exporting the checkpoint file.
 
 ---
 
@@ -118,10 +116,9 @@ pip install -r requirements.txt
 # 3. Run everything
 python main.py
 ```
-
 ---
 
-## 📌 Key Results at a Glance
+## 📌 Results
 
 | Metric | Value |
 |---|---|
