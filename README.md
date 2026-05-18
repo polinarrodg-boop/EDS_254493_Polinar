@@ -8,8 +8,8 @@
 
 | | |
 |---|---|
-| **Student Name** | `[ Polinar ]` |
-| **Student Number** | `[ 254493 ]` |
+| **Student Name** | `[ Rodg Polinar ]` |
+| **Student Number** | `[ TUPM-25-4493 ]` |
 | **Course & Section** | BSECE – 1C |
 | **Subject** | Computer Programming 1 |
 | **Professor** | Engr. Gilfred Allen Madrigal |
