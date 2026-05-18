@@ -6,7 +6,8 @@
 
 ## 👤 Student Profile
 
-| :--- | :--- |
+| | |
+|---|---|
 | **Student Nmae** | `[ Rodg Polinar ]` |
 | **Student ID No.** | `[ TUPM-25-4493 ]` |
 | **Course, Year, and Section** | BSECE – 1C |
