@@ -1,6 +1,6 @@
 # 🐟 AQU-04 — Bio-Filter Efficiency Tracking in Recirculating Aquaculture Systems
 
-> An automated Python pipeline that figures out exactly when bio-filter nitrification kinetics begin to drift based on water chemistry — and proves it with statistics.
+> An automated Python pipeline that isolates the exact water chemistry thresholds where bio-filter nitrification efficiency drops—and validates the system drift using vectorized NumPy analytics.
 
 ---
 
