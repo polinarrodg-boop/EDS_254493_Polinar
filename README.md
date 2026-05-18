@@ -117,3 +117,25 @@ pip install -r requirements.txt
 
 # 3. Run everything
 python main.py
+---
+
+## 📌 Key Results at a Glance
+
+| Metric | Value |
+|---|---|
+| Filter Conversion Efficiency (Mean) | **88.4480%** |
+| Filter Conversion Efficiency (Median) | **88.4113%** |
+| Target Filter Operational Records | **5,871 Lines** |
+| Mean Ammonia Inlet Concentration | 1.5731 mg/L |
+| Mean Ammonia Outlet Concentration | 0.1858 mg/L |
+| Operational Water Temperature (Mean) | 26.4154°C |
+
+---
+
+## 📦 Dependencies
+
+```text
+numpy>=1.24.0
+pandas>=2.0.0
+matplotlib>=3.7.0
+plotly>=5.13.0
